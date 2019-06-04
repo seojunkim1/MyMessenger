@@ -10,7 +10,6 @@ import UIKit
 
 @objcMembers class ModelUser: NSObject {
     
-    
     var userName : String?
     var profileImageUrl : String?
     var uid : String?

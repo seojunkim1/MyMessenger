@@ -10,8 +10,8 @@ import ObjectMapper     // json -> 인스턴스로 만들어주는 라이브러�
 
 class ChatModel: Mappable {
     
-    public var users :Dictionary<String,Bool> = [:]      // 채팅방에 참여한 사람들
-    public var comments :Dictionary<String,Comment> = [:]    // 채팅방의 대화내용
+    public var users = [String:Bool]()     // 채팅방에 참여한 사람들
+    public var comments = [String:Comment]()    // 채팅방의 대화내용
     
     required init?(map: Map) {
     }
@@ -34,5 +34,4 @@ class ChatModel: Mappable {
             timestamp <- map["timestamp"]
         }
     }
-
 }

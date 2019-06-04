@@ -81,7 +81,7 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		93277E792211499900392813 /* VC */ = {
+		93277E792211499900392813 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				9346FC03220BBB73006B2169 /* ViewController.swift */,
@@ -95,7 +95,7 @@
 				938810B5221A4593007C7AAB /* SettingViewController.swift */,
 				93FFBCD42213A0470048CD75 /* ChatRoomsViewController.swift */,
 			);
-			path = VC;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		93277E7A2211509900392813 /* Model */ = {
@@ -135,7 +135,7 @@
 				9346FC0A220BBB75006B2169 /* LaunchScreen.storyboard */,
 				9346FC08220BBB75006B2169 /* Assets.xcassets */,
 				93277E7A2211509900392813 /* Model */,
-				93277E792211499900392813 /* VC */,
+				93277E792211499900392813 /* Controller */,
 				938A89A722103C5E0044A3AD /* View */,
 			);
 			path = FirebaseTalk;

@@ -135,6 +135,9 @@ class SignupViewController: UIViewController, UINavigationControllerDelegate, UI
         self.view.endEditing(true)
     }
     
+    
+    
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

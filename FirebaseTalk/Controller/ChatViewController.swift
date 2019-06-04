@@ -63,7 +63,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         if let keyboardSize: NSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             
             self.viewBottomConstraint.constant = keyboardSize.cgRectValue.height
-
+            
         }
         UIView.animate(withDuration: 0, animations: {
             self.view.layoutIfNeeded()
@@ -86,7 +86,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.view.endEditing(true)
     }
-
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return comments.count
@@ -110,7 +110,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             view.yourNameLabel.text = destinationUserModel?.userName
             view.yourMessageTextView.text = self.comments[indexPath.row].message
-        
+            
             let myUrl = URL(string:(self.destinationUserModel?.profileImageUrl)!)
             view.yourProfileImgView.layer.cornerRadius = view.yourProfileImgView.frame.width / 2
             view.yourProfileImgView.layer.masksToBounds = true
@@ -122,7 +122,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             
             
-    }
+        }
         return UITableViewCell()
         
     }
@@ -131,7 +131,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         return UITableView.automaticDimension
     }
     
-
+    
     // 채팅방 생성
     @objc func createRoom() {
         let createRoomInfo:Dictionary<String,Any> = [ "users" : [
@@ -152,9 +152,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         } else {
             
             let myValue : Dictionary<String,Any> =  [
-                    "uid" : uid!,
-                    "message" : myRealTextView.text!,
-                    "timestamp" : ServerValue.timestamp()
+                "uid" : uid!,
+                "message" : myRealTextView.text!,
+                "timestamp" : ServerValue.timestamp()
             ]
             Database.database().reference().child("chatrooms").child(chatRoomUid!).child("comments").childByAutoId().setValue(myValue, withCompletionBlock: { (err, ref) in
                 self.myRealTextView.text! = ""
@@ -192,7 +192,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             print(self.destinationUserModel)
             // 👹datasnapshot.value를 딕셔너리 값으로 가져오면, 거기서 objectforkey username이랑 profileulriMage 값을 뽑아서 새롭게 선언한 ModelUser()에 값을 넣어주는거임. 넣어준 값을 거기서 프로퍼티로 접근해서 뽑아서 쓰면 됨.
             
-// datasnapshot으로 넘어온 값을 딕셔너리로 만든다음에 넘겨주면, 키가 세팅이 돼서 오브젝트가 만들어짐.
+            // datasnapshot으로 넘어온 값을 딕셔너리로 만든다음에 넘겨주면, 키가 세팅이 돼서 오브젝트가 만들어짐.
             
             self.getMessageList()
             
@@ -206,7 +206,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             self.comments.removeAll()
             for item in datasnapshot.children.allObjects as! [DataSnapshot] {
-
+                
                 let myComment = ChatModel.Comment(JSON: (item.value as! NSMutableDictionary) as! [String : Any])
                 
                 self.comments.append(myComment!)
@@ -217,7 +217,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             // 말풍선과 스크롤바가 같이 내려가게 하기
             if self.comments.count > 0 {
                 self.myTableView.scrollToRow(at: IndexPath(item: self.comments.count - 1 , section: 0), at: .bottom, animated: true)
-
+                
             }
             
         })
@@ -235,15 +235,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-
-    
 }
 extension Int {
     
     var myTodayTime : String {
         let myDateFormatter = DateFormatter()
-
-
+        
+        
         myDateFormatter.dateStyle = .medium
         myDateFormatter.timeStyle = .medium
         myDateFormatter.dateFormat = "M월 d일 h:mm a"

@@ -28,7 +28,7 @@ class SettingViewController: UIViewController {
         
         let myAlertController = UIAlertController(title: "상태 메세지", message: nil, preferredStyle: .alert)
         myAlertController.addTextField { (textfield) in
-            textfield.placeholder = "상태메세지를 입력해주세요"
+            textfield.placeholder = "상태메세지 입력!"
         }
         myAlertController.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action) in
             if let myTextField = myAlertController.textFields?.first {

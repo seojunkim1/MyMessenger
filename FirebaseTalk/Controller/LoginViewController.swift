@@ -51,21 +51,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func eventLogin() {
-            Auth.auth().signIn(withEmail: textFieldEmail.text!, password: textFieldPassword.text!) { (user, err) in
-                if(err != nil) {
-                    let alert = UIAlertController(title: "에러", message: err.debugDescription, preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                }
+        Auth.auth().signIn(withEmail: textFieldEmail.text!, password: textFieldPassword.text!) { (user, err) in
+            if(err != nil) {
+                let alert = UIAlertController(title: "에러", message: err.debugDescription, preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
+        }
     }
     
-   
-
+    
+    
     @objc func signupPresent() {
-                let view = self.storyboard?.instantiateViewController(withIdentifier: "SignupViewController") as! SignupViewController  //
-                self.present(view, animated: true, completion: nil)
-            }
+        let view = self.storyboard?.instantiateViewController(withIdentifier: "SignupViewController") as! SignupViewController  //
+        self.present(view, animated: true, completion: nil)
+    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -83,7 +83,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
-    
-        }
+}
+
 

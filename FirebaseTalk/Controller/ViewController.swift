@@ -11,20 +11,17 @@ import SnapKit
 import Firebase
 
 
-
 class ViewController: UIViewController {
     
     var box = UIImageView()
     var remoteConfig: RemoteConfig!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         remoteConfig = RemoteConfig.remoteConfig()
         remoteConfig.configSettings = RemoteConfigSettings(developerModeEnabled: true)
         remoteConfig.setDefaults(fromPlist: "RemoteConfigDefaults")
-        
-        
         remoteConfig.fetch(withExpirationDuration: TimeInterval(0)) { (status, error) -> Void in // TimeInterval(0) -> 앱을 켤때마다 요청
             if status == .success {
                 print("컴파일 성공!")

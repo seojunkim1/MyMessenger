@@ -17,12 +17,12 @@ class PeopleViewController: UIViewController,UITableViewDelegate, UITableViewDat
     var myArray : [ModelUser] = []
     var myTableview : UITableView!
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         guard let tabBar = self.tabBarController?.tabBar else {return}
-
+        
         tabBar.tintColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
         tabBar.barTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         tabBar.unselectedItemTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
@@ -47,7 +47,7 @@ class PeopleViewController: UIViewController,UITableViewDelegate, UITableViewDat
             for child in snapShot.children {
                 let fbChild = child as! DataSnapshot
                 let userModel = ModelUser()
-
+                
                 userModel.setValuesForKeys(fbChild.value as! [String : Any])
                 
                 if(userModel.uid == myUid) {
